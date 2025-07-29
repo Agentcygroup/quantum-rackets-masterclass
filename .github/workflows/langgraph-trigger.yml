@@ -1,0 +1,10 @@
+name: LangGraph Trigger
+on:
+  push:
+    branches: [main]
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify LangGraph Agents
+        run: curl -X POST http://localhost:8080/hook -H "Content-Type: application/json" -d '{"event": "commit"}'
